@@ -1,3 +1,7 @@
+// Query selectors
+const buttons = document.querySelectorAll("button");
+const display = document.querySelector("#display");
+
 const add = (a, b) => {
 	return a + b;
 };
@@ -32,4 +36,12 @@ const operate = (operator, firstNum, secondNum) => {
 	}
 };
 
-console.log(operate("divide", 10, 2));
+let displayValue;
+
+buttons.forEach((button) => {
+	button.addEventListener("click", (displayValue) => {
+		display.textContent += button.id;
+	});
+});
+
+// Create the functions that populate the display when you click the number buttons. You should be storing the ‘display value’ in a variable somewhere for use in the next step.
