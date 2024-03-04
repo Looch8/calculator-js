@@ -36,12 +36,17 @@ const operate = (operator, firstNum, secondNum) => {
 	}
 };
 
-let displayValue;
+// display value numbers gets added to this variable
+let displayValue = 0;
 
-buttons.forEach((button) => {
-	button.addEventListener("click", (displayValue) => {
-		display.textContent += button.id;
+const populateDisplay = () => {
+	buttons.forEach((button) => {
+		button.addEventListener("click", () => {
+			// button inputs to display on calc screen
+			display.textContent += button.id;
+			displayValue += +button.id;
+			console.log(displayValue);
+		});
 	});
-});
-
-// Create the functions that populate the display when you click the number buttons. You should be storing the ‘display value’ in a variable somewhere for use in the next step.
+};
+populateDisplay();
