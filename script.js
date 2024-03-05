@@ -36,6 +36,25 @@ const operate = (operator, firstNum, secondNum) => {
 	}
 };
 
+const storeNumbers = (button) => {
+	// Store first value
+	if (
+		button.id == "+" ||
+		button.id == "-" ||
+		button.id == "x" ||
+		button.id == "/"
+	) {
+		firstNum = displayValue;
+		displayValue = "";
+		console.log(`first num: ${firstNum}`);
+	}
+	// Store second value
+	if (button.id == "=") {
+		secondNum = displayValue;
+		console.log(`second num: ${secondNum}`);
+	}
+};
+
 // display value numbers gets added to this variable
 let displayValue = "";
 
@@ -45,23 +64,7 @@ const populateDisplay = () => {
 			// button inputs to display on calc screen
 			display.textContent += button.id;
 			displayValue += button.id;
-			// Store first value
-			// TODO: Try to put this functionaility into it's own function and then call the function in this button.addevent listener
-			if (
-				button.id == "+" ||
-				button.id == "-" ||
-				button.id == "x" ||
-				button.id == "/"
-			) {
-				firstNum = displayValue;
-				displayValue = "";
-				console.log(`first num: ${firstNum}`);
-			}
-			// Store second value
-			if (button.id == "=") {
-				secondNum = displayValue;
-				console.log(`second num: ${secondNum}`);
-			}
+			storeNumbers(button);
 			console.log(`display value ${displayValue}`);
 		});
 	});
