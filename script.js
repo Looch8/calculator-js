@@ -39,10 +39,10 @@ const operate = (operator, firstNum, secondNum) => {
 const storeNumbers = (button) => {
 	// Store first value
 	if (
-		button.id == "+" ||
-		button.id == "-" ||
-		button.id == "x" ||
-		button.id == "/"
+		button.id == "add" ||
+		button.id == "subtract" ||
+		button.id == "multiply" ||
+		button.id == "divide"
 	) {
 		firstNum = displayValue;
 		displayValue = "";
@@ -62,7 +62,7 @@ const populateDisplay = () => {
 	buttons.forEach((button) => {
 		button.addEventListener("click", () => {
 			// button inputs to display on calc screen
-			display.textContent += button.id;
+			display.textContent += button.textContent;
 			displayValue += button.id;
 			storeNumbers(button);
 			console.log(`display value ${displayValue}`);
