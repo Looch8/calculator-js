@@ -23,6 +23,29 @@ let firstNum;
 let secondNum;
 let operator;
 
+const storeNumbers = (button) => {
+	// Store first value
+	if (
+		button.id == "add" ||
+		button.id == "subtract" ||
+		button.id == "multiply" ||
+		button.id == "divide"
+	) {
+		firstNum = parseFloat(displayValue);
+		displayValue = "";
+		operator = button.id;
+		console.log(`first num: ${firstNum}`);
+		console.log(operator);
+	}
+	// Store second value
+	if (button.id == "=") {
+		secondNum = parseFloat(displayValue);
+		console.log(`second num: ${secondNum}`);
+		const result = operate(operator, firstNum, secondNum);
+		display.textContent = result;
+	}
+};
+
 const operate = (operator, firstNum, secondNum) => {
 	if (operator == "add") {
 		return add(firstNum, secondNum);
@@ -36,28 +59,7 @@ const operate = (operator, firstNum, secondNum) => {
 		return null;
 	}
 };
-
-const storeNumbers = (button, operator) => {
-	// Store first value
-	if (
-		button.id == "add" ||
-		button.id == "subtract" ||
-		button.id == "multiply" ||
-		button.id == "divide"
-	) {
-		firstNum = displayValue;
-		displayValue = "";
-		operator = button.id;
-		console.log(`first num: ${firstNum}`);
-		console.log(operator);
-	}
-	// Store second value
-	if (button.id == "=") {
-		secondNum = displayValue;
-		console.log(`second num: ${secondNum}`);
-	}
-};
-
+console.log(operate());
 // display value numbers gets added to this variable
 let displayValue = "";
 
