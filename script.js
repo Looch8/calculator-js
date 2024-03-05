@@ -46,6 +46,7 @@ const populateDisplay = () => {
 			display.textContent += button.id;
 			displayValue += button.id;
 			// Store first value
+			// TODO: Try to put this functionaility into it's own function and then call the function in this button.addevent listener
 			if (
 				button.id == "+" ||
 				button.id == "-" ||
