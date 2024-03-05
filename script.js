@@ -34,15 +34,18 @@ const storeNumbers = (button) => {
 		firstNum = parseFloat(displayValue);
 		displayValue = "";
 		operator = button.id;
-		console.log(`first num: ${firstNum}`);
-		console.log(operator);
 	}
 	// Store second value
 	if (button.id == "=") {
 		secondNum = parseFloat(displayValue);
-		console.log(`second num: ${secondNum}`);
+
 		const result = operate(operator, firstNum, secondNum);
 		display.textContent = result;
+	}
+	// Clear display
+	if (button.id == "clear") {
+		display.textContent = "";
+		displayValue = "";
 	}
 };
 
@@ -59,7 +62,7 @@ const operate = (operator, firstNum, secondNum) => {
 		return null;
 	}
 };
-console.log(operate());
+
 // display value numbers gets added to this variable
 let displayValue = "";
 
@@ -67,15 +70,11 @@ const populateDisplay = () => {
 	buttons.forEach((button) => {
 		button.addEventListener("click", () => {
 			// button inputs to display on calc screen
+
 			display.textContent += button.textContent;
 			displayValue += button.id;
 			storeNumbers(button, operator);
-			console.log(`display value ${displayValue}`);
 		});
 	});
 };
 populateDisplay();
-
-// Make the calculator work! You’ll need to store the first number and second number that are input into the calculator, utilize the operator that the user selects, and then operate() on the two numbers when the user presses the “=” key.
-// You should already have the code that can populate the display, so once operate() has been called, update the display with the ‘solution’ to the operation.
-// This is the hardest part of the project. You need to figure out how to store all the values and call the operate function with them. Don’t feel bad if it takes you a while to figure out the logic.
