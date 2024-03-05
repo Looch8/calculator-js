@@ -22,6 +22,7 @@ const divide = (a, b) => {
 let firstNum;
 let secondNum;
 let operator;
+
 const operate = (operator, firstNum, secondNum) => {
 	if (operator == "add") {
 		return add(firstNum, secondNum);
@@ -36,7 +37,7 @@ const operate = (operator, firstNum, secondNum) => {
 	}
 };
 
-const storeNumbers = (button) => {
+const storeNumbers = (button, operator) => {
 	// Store first value
 	if (
 		button.id == "add" ||
@@ -46,7 +47,9 @@ const storeNumbers = (button) => {
 	) {
 		firstNum = displayValue;
 		displayValue = "";
+		operator = button.id;
 		console.log(`first num: ${firstNum}`);
+		console.log(operator);
 	}
 	// Store second value
 	if (button.id == "=") {
@@ -64,7 +67,7 @@ const populateDisplay = () => {
 			// button inputs to display on calc screen
 			display.textContent += button.textContent;
 			displayValue += button.id;
-			storeNumbers(button);
+			storeNumbers(button, operator);
 			console.log(`display value ${displayValue}`);
 		});
 	});
